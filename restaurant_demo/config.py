@@ -15,6 +15,8 @@ def create_config_obj(env_setting):
 class Config(object):
     # Flask Settings
     SECRET_KEY = env.str("FLASK_SECRET_KEY")
+    SQLALCHEMY_DATABASE_URI = env.str("DATABASE_URL")
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
 DevelopmentConfig = create_config_obj("DEV_")
