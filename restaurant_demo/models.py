@@ -4,7 +4,7 @@ from restaurant_demo.forms import LoginForm
 
 from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from flask_admin.contrib.sqla import ModelView
-from flask_login import UserMixin, login_required, current_user, logout_user
+from flask_login import UserMixin, login_required, current_user, logout_user, login_user
 from flask_admin import AdminIndexView, expose, helpers
 
 from flask import redirect, url_for, request
@@ -72,9 +72,9 @@ class RestaurantAdminIndexView(AdminIndexView):
     def login(self):
         form = LoginForm(request.form)
         if helpers.validate_form_on_submit(form):
-            user = form.get_user()
-            if user is not None and user.verify_password(form.password.data):
-                login.login_user(user)
+            user = User.query.filter_by(email=form.email.data).first()
+            if user is not None and user.is_correct_password(form.password.data):
+                login_user(user)
             else:
                 flash("Invalid username or password.")
         if current_user.is_authenticated:
