@@ -1,6 +1,6 @@
 // Smooth scrolling to links in the page
 
-var headerHeight = 68;
+var headerHeight = 80;
 
 $('.nav-link, #book-button, #top-logo').click(function () {
     var sectionTo = $(this).attr('href');
