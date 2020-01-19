@@ -1,3 +1,16 @@
+:root{
+    --main-color: #39679B;
+    --main-bg: #242222;
+    --label-font: 'Cormorant Garamond', serif;
+}
+
+.navbar-nav a.nav-item.nav-link.icon{
+    font-size: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 1.25em;
+}
+
 
 @media (min-width: 992px){
     .navbar-nav a.nav-item.nav-link{
@@ -22,4 +35,91 @@
 .restaurant-name {
     font-family: 'Amatic SC', cursive;
     font-size: 36px;
+}
+
+.section-title {
+    color: white;
+    background-color: var(--main-bg);
+    font-size: 36px;
+    font-family: var(--label-font);
+    letter-spacing: 6px;
+}
+
+.section-title-div {
+    min-height: 200px;
+    justify-content: center;
+
+}
+
+.top {
+    z-index: 1;
+}
+
+/* menu */
+
+#menu, #welcome {
+    background-color: var(--main-bg);
+    color: white;
+}
+
+#menu-pic {
+    background-image: url('../img/restaurant/menu-pic.jpg');
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+    
+}
+
+#ramen-pic {
+    background-image: url('../img/restaurant/ramen-pic.jpg');
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 500px;
+}
+
+.menu-sublabel {
+    margin-left: -54%;
+    margin-right: 39%;
+    font-size: 40px;
+    background-color: var(--main-bg);
+    padding: 50px;
+    font-family: var(--label-font);
+    letter-spacing: 6px;
+    z-index: 1;
+
+}
+
+.menu-sublabel-left {
+    margin-left: 60%;
+    margin-right: -50%;
+    font-size: 40px;
+    background-color: var(--main-bg);
+    padding: 50px;
+    font-family: var(--label-font);
+    letter-spacing: 6px;
+    z-index: 1;
+
+}
+
+
+/* map section */
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:75%;
+    width:100%;
+    position:absolute;
 }

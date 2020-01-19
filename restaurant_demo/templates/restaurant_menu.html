@@ -1,8 +1,46 @@
-<div id="menu" class="text-center">
-    <h1>Menu</h1>
-    <section class="menu-section">
-        {% for item in menu_items %}
-        {{item.name}} |
-        {{item.price}}
-        <br> {{item.description}} <br>{% endfor %} </section>
+<div id="menu" class="text-center container-fluid">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-5 col-sm-9 d-flex align-items-center section-title-div">
+            <div class="align-self-center">
+                <h1 class="section-title ">OUR MENU</h1>
+            </div>
+        </div>
+        <div class="col-md-7 col-sm-3">
+
+        </div>
+    </div>
+
+
+    <div class="row d-flex align-items-center">
+        <div class="col-md-9 col-sm-9 d-flex align-items-center" id="menu-pic">
+            <div class="align-self-center">
+
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3">
+            <div class="menu-sublabel">
+                STARTERS
+            </div>
+
+        </div>
+    </div>
+
+    <div class="row d-flex align-items-center">
+        <div class="col-md-6 col-sm-12 d-flex align-items-center">
+            <div class="align-self-center">
+
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-12">
+            <section class="menu-section">
+                {% for item in menu_items %}
+                {{item.name}} |
+                {{item.price}}
+                <br> {{item.description}} <br>{% endfor %} </section>
+        </div>
+    </div>
+
+
+
+
 </div>
