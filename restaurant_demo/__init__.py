@@ -1,4 +1,5 @@
 import os
+import click
 
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
@@ -43,6 +44,16 @@ def create_app(config_class=DevelopmentConfig):
             images=images,
             menu_items=menu_items,
         )
+
+    @app.cli.command("create-user")
+    @click.argument("email")
+    def create_user(email):
+
+        pw = input("Password: ")
+        user = models.User(email=email, password=pw)
+        db.session.add(user)
+        db.session.commit()
+        print("User Created")
 
     return app
 
