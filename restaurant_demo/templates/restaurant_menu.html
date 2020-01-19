@@ -1,4 +1,4 @@
-<div id="menu" class="text-center container-fluid">
+<div id="menu" class="container-fluid">
     <div class="row d-flex align-items-center">
         <div class="col-md-5 col-sm-9 d-flex align-items-center section-title-div">
             <div class="align-self-center">
@@ -24,21 +24,25 @@
 
         </div>
     </div>
-
-    <div class="row d-flex align-items-center">
-        <div class="col-md-6 col-sm-12 d-flex align-items-center">
-            <div class="align-self-center">
-
+    <div class="menu-section py-5">
+        <div class="row d-flex align-items-center">
+            {%- for column in menu_items|slice(2) %}
+            <div class="col-md-4 col-sm-12">
+                <ul>
+                    {%- for item in column %}
+                    <li>
+                        <strong>{{item.name}}</strong> |
+                        {{item.price}}
+                        <br> {{item.description}} <br>
+                    </li>
+                    {%- endfor %}
+                </ul>
             </div>
-        </div>
-        <div class="col-md-6 col-sm-12">
-            <section class="menu-section">
-                {% for item in menu_items %}
-                {{item.name}} |
-                {{item.price}}
-                <br> {{item.description}} <br>{% endfor %} </section>
+            {%- endfor %}
+            <div class="col-md-4 d-none d-md-flex"></div>
         </div>
     </div>
+</div>
 
 
 
