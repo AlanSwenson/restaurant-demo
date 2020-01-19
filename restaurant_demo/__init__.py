@@ -3,14 +3,19 @@ import os
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager, logout_user, login_user, login_required
+from flask_admin import Admin, AdminIndexView, expose, helpers
+
 
 from restaurant_demo.config import DevelopmentConfig
 
 db = SQLAlchemy()
-admin = Admin()
 migrate = Migrate()
+bcrypt = Bcrypt()
+admin = Admin()
+login = LoginManager()
 
 
 def create_app(config_class=DevelopmentConfig):
@@ -18,13 +23,14 @@ def create_app(config_class=DevelopmentConfig):
     app.config.from_object(config_class)
 
     with app.app_context():
-        initialize_extensions(app)
         import restaurant_demo.models as models
+
+        initialize_extensions(app)
 
         add_admin_views()
 
     @app.route("/", methods=["POST", "GET"])
-    def root():
+    def index():
         menu_items = models.MenuItem.query.all()
 
         # Add or remove images from 'static/img/gallery'
@@ -43,9 +49,11 @@ def create_app(config_class=DevelopmentConfig):
 
 def initialize_extensions(app):
     db.init_app(app)
-    admin.init_app(app)
+    admin.init_app(app, index_view=models.RestaurantAdminIndexView())
     migrate.init_app(app, db)
+    bcrypt.init_app(app)
+    login.init_app(app)
 
 
 def add_admin_views():
-    admin.add_view(ModelView(models.MenuItem, db.session))
+    admin.add_view(models.MyModelView(models.MenuItem, db.session))
