@@ -6,6 +6,7 @@ from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
 from flask_admin.contrib.sqla import ModelView
 from flask_login import UserMixin, login_required, current_user, logout_user, login_user
 from flask_admin import AdminIndexView, expose, helpers
+from wtforms.fields import SelectField
 
 from flask import redirect, url_for, request
 
@@ -20,6 +21,8 @@ class MenuItem(db.Model):
     name = db.Column(db.String())
     price = db.Column(db.Integer)
     description = db.Column(db.String())
+    category = db.Column(db.String())
+    sort_order = db.Column(db.Integer)
 
 
 class User(UserMixin, db.Model):
@@ -90,6 +93,15 @@ class RestaurantAdminIndexView(AdminIndexView):
 
 
 class MyModelView(ModelView):
+    """
+    Admin manager for MyModel
+    """
+
+    form_overrides = dict(category=SelectField)
+    form_args = dict(
+        category=dict(choices=[("Starters", "Starters"), ("Mains", "Mains")])
+    )
+
     def is_accessible(self):
         return current_user.is_authenticated
 

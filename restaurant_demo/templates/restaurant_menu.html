@@ -26,7 +26,7 @@
     </div>
     <div class="menu-section py-lg-5">
         <div class="row d-flex align-items-center">
-            {%- for column in menu_items|slice(2) %}
+            {%- for column in menu_items|selectattr('category', 'equalto', 'Starters')|sort(attribute='sort_order')|slice(2) %}
             <div class="col-md-4 col-sm-12">
                 <ul>
                     {%- for item in column %}
@@ -58,7 +58,7 @@
     <div class="menu-section py-lg-5">
         <div class="row d-flex align-items-center">
             <div class="col-md-4 d-none d-md-flex"></div>
-            {%- for column in menu_items|slice(2) %}
+            {%- for column in menu_items|selectattr('category', 'equalto', 'Mains')|sort(attribute='sort_order')|slice(2) %}
             <div class="col-md-4 col-sm-12">
                 <ul>
                     {%- for item in column %}
