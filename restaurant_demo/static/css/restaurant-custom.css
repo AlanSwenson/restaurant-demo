@@ -2,6 +2,7 @@
     --main-color: #39679B;
     --main-bg: #242222;
     --label-font: 'Cormorant Garamond', serif;
+    --nav-height: 80px;
 }
 
 .navbar-nav a.nav-item.nav-link.icon{
@@ -9,6 +10,21 @@
     padding-left: 10px;
     padding-right: 10px;
     line-height: 1.25em;
+}
+
+@media (max-width: 767px) {
+    /* prevent menu from expaning navbar height */
+    #navbarNavAltMarkup {
+        background-color: white;
+        position: absolute;
+        top: var(--nav-height);
+        right: 0px;
+        width: 100% !important;
+        width: -moz-available;          /* WebKit-based browsers will ignore this. */
+        width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+        width: fill-available;
+        opacity: .8;
+    }  
 }
 
 
