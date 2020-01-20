@@ -25,6 +25,21 @@
         width: fill-available;
         opacity: .8;
     }  
+
+
+}
+
+@media (max-width: 991px) {
+
+    .inverse-label {
+        background-color: white;
+        color: var(--main-bg);
+        width: 100%;
+    }
+    #hours .section-title{
+        background-color: white;
+        color: var(--main-bg);
+    }
 }
 
 
