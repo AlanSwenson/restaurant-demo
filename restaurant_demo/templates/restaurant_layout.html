@@ -12,9 +12,9 @@
 
 
     <!-- Custom CSS -->
-    <link href="{{ url_for('static', filename='css/restaurant-custom.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/hamburger.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/scroll-top.css') }}" rel="stylesheet">
+    {% assets "css_all" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}">
+    {% endassets %}
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/4c3d8eeae0.js" crossorigin="anonymous"></script>
@@ -43,10 +43,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='js/carousel-multi-size.js') }}"></script>
-    <script async src="{{ url_for('static', filename='js/hamburger.js') }}"></script>
-    <script async src="{{ url_for('static', filename='js/smooth_scroll.js') }}"></script>
-    <script async src="{{ url_for('static', filename='js/scroll_top.js') }}"></script>
+    {% assets "js_all" %}
+    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
+    {% endassets %}
 
 </body>
 

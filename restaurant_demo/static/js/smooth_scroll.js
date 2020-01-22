@@ -2,7 +2,8 @@
 
 var headerHeight = 80;
 
-$('.nav-link, #book-button, #top-logo').click(function () {
+$('.nav-link, #book-button, #top-logo').click(function (e) {
+    e.preventDefault();
     var sectionTo = $(this).attr('href');
     if (sectionTo != '#') {
         $('html, body').animate({

@@ -5,3 +5,6 @@
 .pytest_cache
 zappa_settings.json
 __pycache__
+.webassets-cache
+packed.js
+packed.css

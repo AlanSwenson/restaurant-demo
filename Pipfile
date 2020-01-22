@@ -17,6 +17,7 @@ psycopg2 = "*"
 flask-bcrypt = "*"
 flask-login = "*"
 flask-wtf = "*"
+flask-assets = "*"
 
 [dev-packages]
 black = "*"

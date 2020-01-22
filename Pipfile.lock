@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "67dd835149c81268bee2b1f4ddd9dc78a54099128827bc950a90c769f33f830c"
+            "sha256": "39045a28a38f5f676c76136e77e470393aa2d18c4228536995bb349c6a576bb7"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -113,6 +113,14 @@
             "index": "pypi",
             "version": "==1.5.4"
         },
+        "flask-assets": {
+            "hashes": [
+                "sha256:1dfdea35e40744d46aada72831f7613d67bf38e8b20ccaaa9e91fdc37aa3b8c2",
+                "sha256:2845bd3b479be9db8556801e7ebc2746ce2d9edb4e7b64a1c786ecbfc1e5867b"
+            ],
+            "index": "pypi",
+            "version": "==2.0"
+        },
         "flask-bcrypt": {
             "hashes": [
                 "sha256:d71c8585b2ee1c62024392ebdbc447438564e2c8c02b4e57b56a4cafd8d13c5f"
@@ -176,9 +184,9 @@
         },
         "mako": {
             "hashes": [
-                "sha256:a36919599a9b7dc5d86a7a8988f23a9a3a3d083070023bab23d64f7f1d1e0a4b"
+                "sha256:2984a6733e1d472796ceef37ad48c26f4a984bb18119bb2dbc37a44d8f6e75a4"
             ],
-            "version": "==1.1.0"
+            "version": "==1.1.1"
         },
         "markupsafe": {
             "hashes": [
@@ -254,10 +262,10 @@
         },
         "python-dotenv": {
             "hashes": [
-                "sha256:007f0bacef4093a7588c1ed0a3d746a59c04f9bac00f68aaa4e9c30c5fe9429b",
-                "sha256:26a252f7931a448a78d3322d69b60e193d847a02fb96260de1d7b37aadcd46b3"
+                "sha256:440c7c23d53b7d352f9c94d6f70860242c2f071cf5c029dd661ccb22d64ae42b",
+                "sha256:f254bfd0c970d64ccbb6c9ebef3667ab301a71473569c991253a481f1c98dddc"
             ],
-            "version": "==0.10.4"
+            "version": "==0.10.5"
         },
         "python-editor": {
             "hashes": [
@@ -304,6 +312,13 @@
             ],
             "index": "pypi",
             "version": "==1.25.7"
+        },
+        "webassets": {
+            "hashes": [
+                "sha256:167132337677c8cedc9705090f6d48da3fb262c8e0b2773b29f3352f050181cd",
+                "sha256:a31a55147752ba1b3dc07dee0ad8c8efff274464e08bbdb88c1fd59ffd552724"
+            ],
+            "version": "==2.0"
         },
         "werkzeug": {
             "hashes": [

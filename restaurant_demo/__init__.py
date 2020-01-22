@@ -8,6 +8,7 @@ from flask_admin.contrib.sqla import ModelView
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, logout_user, login_user, login_required
 from flask_admin import Admin, AdminIndexView, expose, helpers
+from flask_assets import Environment, Bundle
 
 
 from restaurant_demo.config import DevelopmentConfig
@@ -17,6 +18,7 @@ migrate = Migrate()
 bcrypt = Bcrypt()
 admin = Admin()
 login = LoginManager()
+assets = Environment()
 
 
 def create_app(config_class=DevelopmentConfig):
@@ -28,6 +30,7 @@ def create_app(config_class=DevelopmentConfig):
 
         initialize_extensions(app)
 
+        bundle_assets(app)
         add_admin_views()
 
     @app.route("/", methods=["POST", "GET"])
@@ -64,7 +67,27 @@ def initialize_extensions(app):
     migrate.init_app(app, db)
     bcrypt.init_app(app)
     login.init_app(app)
+    assets.init_app(app)
 
 
 def add_admin_views():
     admin.add_view(models.MyModelView(models.MenuItem, db.session))
+
+
+def bundle_assets(app):
+    assets.url = app.static_url_path
+    js = Bundle(
+        "js/carousel-multi-size.js",
+        "js/hamburger.js",
+        "js/smooth_scroll.js",
+        "js/scroll_top.js",
+        output="gen/packed.js",
+    )
+    css = Bundle(
+        "css/hamburger.css",
+        "css/restaurant-custom.css",
+        "css/scroll-top.css",
+        output="gen/packed.css",
+    )
+    assets.register("js_all", js)
+    assets.register("css_all", css)
