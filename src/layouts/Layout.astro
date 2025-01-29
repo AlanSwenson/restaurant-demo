@@ -7,7 +7,7 @@ const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -27,11 +27,26 @@ const { title } = Astro.props;
 
     <!-- Return to Top -->
     <a 
-      href="javascript:" 
+      href="#"
       id="return-to-top"
-      class="fixed bottom-8 right-8 bg-black bg-opacity-50 text-white rounded-full p-4 hidden hover:bg-opacity-70 transition-all duration-300"
+      class="fixed bottom-8 right-8 bg-gray-900 text-white p-3 opacity-0 invisible transition-all duration-300 hover:bg-gray-800 shadow-lg"
+      aria-label="Return to top"
     >
-      <i class="fas fa-chevron-up"></i>
+      <i class="fas fa-chevron-up text-lg"></i>
     </a>
   </body>
-</html> 
+</html>
+
+<script>
+  const returnToTop = document.getElementById('return-to-top');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      returnToTop?.classList.remove('opacity-0', 'invisible');
+      returnToTop?.classList.add('opacity-100', 'visible');
+    } else {
+      returnToTop?.classList.add('opacity-0', 'invisible');
+      returnToTop?.classList.remove('opacity-100', 'visible');
+    }
+  });
+</script> 
