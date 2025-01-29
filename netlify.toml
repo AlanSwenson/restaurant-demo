@@ -1,3 +1,15 @@
 [build]
 command = "yarn run build" # Astro build command
 publish = "dist"           # Astro's default output directory
+
+[[headers]]
+for = "/sitemap.xml"
+[headers.values]
+Content-Type = "application/xml"
+X-Content-Type-Options = "nosniff"
+
+[[headers]]
+for = "/robots.txt"
+[headers.values]
+Content-Type = "text/plain"
+X-Content-Type-Options = "nosniff"
