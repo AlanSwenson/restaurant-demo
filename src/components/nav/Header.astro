@@ -1,0 +1,67 @@
+<header class="w-full">
+  <nav class="sticky top-0 bg-white shadow-sm">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="text-2xl font-semibold font-['Amatic_SC']">Alan's Restaurant</a>
+        
+        <!-- Hamburger Menu -->
+        <div class="md:hidden">
+          <button 
+            type="button" 
+            class="flex flex-col space-y-1.5 p-2"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+          >
+            <span class="block w-6 h-0.5 bg-gray-600"></span>
+            <span class="block w-6 h-0.5 bg-gray-600"></span>
+            <span class="block w-6 h-0.5 bg-gray-600"></span>
+          </button>
+        </div>
+
+        <!-- Navigation Links -->
+        <div class="hidden md:flex md:items-center md:space-x-8">
+          <a href="#menu" class="text-gray-700 hover:text-gray-900">MENU</a>
+          <a href="#welcome" class="text-gray-700 hover:text-gray-900">OUR STORY</a>
+          <a href="#hours" class="text-gray-700 hover:text-gray-900">HOURS & LOCATION</a>
+          <div class="flex space-x-4">
+            <a href="http://instagram.com" class="text-gray-700 hover:text-gray-900">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="http://twitter.com" class="text-gray-700 hover:text-gray-900">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+          <a href="#menu" class="block px-3 py-2 text-gray-700 hover:text-gray-900">MENU</a>
+          <a href="#welcome" class="block px-3 py-2 text-gray-700 hover:text-gray-900">OUR STORY</a>
+          <a href="#hours" class="block px-3 py-2 text-gray-700 hover:text-900">HOURS & LOCATION</a>
+          <div class="flex space-x-4 px-3 py-2">
+            <a href="http://instagram.com" class="text-gray-700 hover:text-gray-900">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="http://twitter.com" class="text-gray-700 hover:text-gray-900">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  const button = document.querySelector('button[aria-controls="mobile-menu"]');
+  const menu = document.getElementById('mobile-menu');
+
+  button?.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', (!expanded).toString());
+    menu?.classList.toggle('hidden');
+  });
+</script> 

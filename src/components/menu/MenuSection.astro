@@ -1,0 +1,100 @@
+---
+import type { MenuItem } from '../../lib/menu';
+
+interface Props {
+  items: MenuItem[];
+}
+
+const { items } = Astro.props;
+
+// Group items by category
+const starters = items.filter(item => item.category === 'Starters')
+  .sort((a, b) => a.sort_order - b.sort_order);
+const mains = items.filter(item => item.category === 'Mains')
+  .sort((a, b) => a.sort_order - b.sort_order);
+
+const starterColumns = splitIntoColumns(starters, 2);
+const mainColumns = splitIntoColumns(mains, 2);
+
+function splitIntoColumns(items: MenuItem[], columnCount: number) {
+  const itemsPerColumn = Math.ceil(items.length / columnCount);
+  return Array.from({ length: columnCount }, (_, i) =>
+    items.slice(i * itemsPerColumn, (i + 1) * itemsPerColumn)
+  );
+}
+---
+
+<div id="menu">
+  <!-- Menu Title -->
+  <div class="flex">
+    <div class="w-full">
+      <h1 class="text-5xl font-amatic text-center py-8 bg-gray-900 text-white">OUR MENU</h1>
+    </div>
+  </div>
+
+  <!-- Menu Images Section -->
+  <div class="flex w-full">
+    <div class="w-3/4">
+      <div id="menu-pic" class="h-[400px] bg-cover bg-center w-full"></div>
+    </div>
+    <div class="w-1/4 bg-gray-900 flex items-center justify-center">
+      <h2 class="text-white text-5xl font-amatic">STARTERS</h2>
+    </div>
+  </div>
+
+  <!-- Starters Section -->
+  <div class="grid md:grid-cols-2 gap-12 container mx-auto px-4 py-16">
+    {starterColumns.map(column => (
+      <div class="">
+        {column.map(item => (
+          <div class="border-b border-gray-300 pb-6">
+            <div class="flex justify-between items-baseline">
+              <h3 class="text-xl font-cormorant font-semibold">{item.name}</h3>
+              <span class="text-lg font-cormorant">${item.price}</span>
+            </div>
+            <p class="text-gray-600 mt-2 font-ibarra">{item.description}</p>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  <!-- Mains Section -->
+  <div class="flex w-full">
+    <div class="w-1/3 bg-gray-900 flex items-center justify-center">
+      <h2 class="text-white text-5xl font-amatic">MAINS</h2>
+    </div>
+    <div class="w-2/3">
+      <div id="ramen-pic" class="h-[400px] bg-cover bg-center w-full"></div>
+    </div>
+  </div>
+
+  <div class="bg-gray-50">
+    <div class="container mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-12">
+        {mainColumns.map(column => (
+          <div class="space-y-8">
+            {column.map(item => (
+              <div class="border-b border-gray-300 pb-6">
+                <div class="flex justify-between items-baseline">
+                  <h3 class="text-xl font-cormorant font-semibold">{item.name}</h3>
+                  <span class="text-lg font-cormorant">${item.price}</span>
+                </div>
+                <p class="text-gray-600 mt-2 font-ibarra">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #menu-pic {
+    background-image: url('/img/restaurant/menu-pic.jpg');
+  }
+  #ramen-pic {
+    background-image: url('/img/restaurant/ramen-pic.jpg');
+  }
+</style> 

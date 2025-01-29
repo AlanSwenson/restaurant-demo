@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/nav/Header.astro';
+import ImageCarousel from '../components/carousel/ImageCarousel.astro';
+import MenuSection from '../components/menu/MenuSection.astro';
+import WelcomeSection from '../components/welcome/WelcomeSection.astro';
+import HoursSection from '../components/hours/HoursSection.astro';
+import Footer from '../components/footer/Footer.astro';
+import { getMenuItems } from '../lib/menu';
+import { getCarouselImages } from '../lib/images';
+
+// Replace Flask's database queries with Astro data fetching
+const menuItems = await getMenuItems();
+const images = await getCarouselImages();
+---
+
+<Layout title="Restaurant Example - Alan Swenson - Portfolio">
+  <Header />
+  
+  <main>
+    <div class="w-full">
+      <ImageCarousel images={images} />
+    </div>
+    <div class="w-full px-0">
+      <MenuSection items={menuItems} />
+      <WelcomeSection />
+      <HoursSection />
+    </div>
+  </main>
+  <Footer />
+</Layout> 

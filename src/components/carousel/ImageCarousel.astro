@@ -1,0 +1,58 @@
+---
+interface Props {
+  images: string[];
+}
+
+const { images } = Astro.props;
+console.log('Carousel images:', images);
+---
+
+<div class="relative w-full h-[60vh] overflow-hidden bg-gray-900">
+  <div class="carousel-container w-full h-full">
+    {images.map((image, index) => (
+      <div class={`carousel-slide absolute w-full h-full transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0'}`}>
+        <img 
+          src={`/img/restaurant/carousel/${image}`} 
+          alt="Restaurant"
+          class="w-full h-full object-cover object-center"
+        />
+      </div>
+    ))}
+  </div>
+
+  <!-- Navigation Buttons -->
+  <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-4 rounded-full" id="prevBtn">
+    <i class="fas fa-chevron-left"></i>
+  </button>
+  <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-4 rounded-full" id="nextBtn">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.carousel-slide');
+
+  function showSlide(index: number) {
+    slides.forEach(slide => slide.classList.remove('opacity-100'));
+    slides.forEach(slide => slide.classList.add('opacity-0'));
+    slides[index].classList.remove('opacity-0');
+    slides[index].classList.add('opacity-100');
+  }
+
+  document.getElementById('nextBtn')?.addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  document.getElementById('prevBtn')?.addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+  });
+
+  // Auto advance
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 5000);
+</script> 
