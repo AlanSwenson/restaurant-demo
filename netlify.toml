@@ -1,3 +1,5 @@
 [build]
 command = "yarn run build" # Astro build command
 publish = "dist"           # Astro's default output directory
+[[plugins]]
+package = "@netlify/plugin-astro" # Ensure Astro is used
