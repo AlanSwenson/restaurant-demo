@@ -1,6 +1,6 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute } from "astro";
 
-const SITE_URL = 'https://your-domain.com'; // Replace with your actual domain
+const SITE_URL = "https://restaurant.alanswenson.dev"; // Replace with your actual domain
 
 export const GET: APIRoute = async () => {
   // Get the current date in ISO format
@@ -8,9 +8,9 @@ export const GET: APIRoute = async () => {
 
   // Add your static routes here
   const staticPages = [
-    '',
-    '/about',
-    '/contact',
+    "",
+    "/about",
+    "/contact",
     // Add other static routes...
   ];
 
@@ -25,13 +25,13 @@ export const GET: APIRoute = async () => {
           <lastmod>${date}</lastmod>
         </url>`
         )
-        .join('')}
+        .join("")}
     </urlset>`;
 
   return new Response(sitemap, {
     headers: {
-      'Content-Type': 'application/xml',
-      'Cache-Control': 'public, max-age=3600',
+      "Content-Type": "application/xml",
+      "Cache-Control": "public, max-age=3600",
     },
   });
-}; 
+};
